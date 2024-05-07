@@ -1,0 +1,3 @@
+user token cannot fork repos
+
+gh repo fork shutterrecoil/forkmenow --fork-name fork-of-forkmenow

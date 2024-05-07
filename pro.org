@@ -1,0 +1,63 @@
+* Snow-Howitzer Intro
+GHC compiler develops with blazing speed.  Maintainers of Haskell
+packages practice to define strict constraints on their dependencies
+in cabal files picking highest available versions, including root
+libraries, which are indivisible part of GHC compiler itself.  So
+every GHC release causes a cascade of mostly bureaucratic PRs
+affecting majority Haskell ecosystem. This is boring.  E.g. according
+to history of GIT repo of "these" package its source code is changed last time 6
+years ago, but cabal file requires to handle PR update every time base
+version bumps up. Haskell community loose time and energy updating
+dependencys' constraints by hand.
+
+Snow-Howitzer (SH) is tool having on goal to automate maintenance
+burden described above.
+SH is built on top of nix build system, hackage meta data and GitHub App
+for forking repos and generating PRs.
+
+** First case scenario
+*** SH starts with
+- GHC with version of base package which is greater than max version
+  of base package specified in the constraints of the new cabal
+  package
+- a list of packages which is part of GHC
+- new cabal package (has not been processed by SH before) without
+  dependencies besides those which are part of GHC
+
+*** Action
+- fork project
+- clone repo
+- update constraint and bump project version
+- generate default.nix to build modified project with specified GHC (libs)
+- in case of successufl build commit with newer libraries (commit changes into a branch and push and PR to origin repo)
+- some index should be maintained to discover versions of packages
+  fixed by SH and used as dependencies by other packages.
+
+
+
+SH builds and keeps depedency graph of cabal packages using
+hackage meta db.
+
+Once new GHC version is released - versions of libraries baked into
+GHC are known - SH tool walks through the forest-graph starting
+from highest nodes and bumps up version constraints on root dependencies
+one by one after GHC bound deps are accepted.
+
+nix is used for overriding dependencies.
+
+Once maximum number of dependencies for a package is succesfully
+bumped - PR is submitted on github.com (address is extracted from
+hackage meta data).
+
+package version in cabal is bumped somehow (exact behaviour should be
+configurable through a project file e.g. least component in a dot
+separated series of numbers).
+
+Next feature is to provide automatic migration for source code of
+libraries using dependency.
+
+* Plan
+
+- create second account to simulate cloning project
+  and sending PRs to from foreign account
+- drop VM on google cloud because it seems useless now

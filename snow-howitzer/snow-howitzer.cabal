@@ -1,0 +1,319 @@
+cabal-version: 2.0
+
+-- This file has been generated from package.yaml by hpack version 0.35.2.
+--
+-- see: https://github.com/sol/hpack
+
+name:           snow-howitzer
+version:        0.0.1
+description:    Tool encforces an avalanche of Haskell package updates once new GHC is released
+category:       Database
+author:         Daniil Iaitskov
+maintainer:     dyaitskov@gmail.com
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+
+library
+  exposed-modules:
+      SnowHowitzer.Api
+      SnowHowitzer.Cli
+      SnowHowitzer.Cmd.RunServer
+      SnowHowitzer.Error
+      SnowHowitzer.FixedPool
+      SnowHowitzer.Gpt.Api
+      SnowHowitzer.Json
+      SnowHowitzer.Katip
+      SnowHowitzer.Lens
+      SnowHowitzer.Lib
+      SnowHowitzer.List
+      SnowHowitzer.Prelude
+      SnowHowitzer.Servant.Monad
+      SnowHowitzer.Time
+      SnowHowitzer.Types
+      SnowHowitzer.Wikipedia.Api
+      Paths_snow_howitzer
+  autogen-modules:
+      Paths_snow_howitzer
+  hs-source-dirs:
+      src
+  default-extensions:
+      DataKinds
+      DeriveGeneric
+      DerivingStrategies
+      DuplicateRecordFields
+      LambdaCase
+      ImportQualifiedPost
+      NoImplicitPrelude
+      OverloadedLabels
+      OverloadedStrings
+      RecordWildCards
+      TemplateHaskell
+      TupleSections
+      TypeFamilies
+      UnicodeSyntax
+      GADTs
+      PolyKinds
+      RankNTypes
+      TypeOperators
+      TypeApplications
+  ghc-options: -O2 -Wall
+  build-depends:
+      SHA
+    , aeson
+    , ansi-terminal
+    , async
+    , base
+    , base64-bytestring
+    , binary
+    , bytestring
+    , containers
+    , deepseq
+    , directory
+    , entropy
+    , exceptions
+    , filepath
+    , fmt
+    , generic-lens
+    , github
+    , hashable
+    , http-client
+    , http-client-tls
+    , http-conduit
+    , http-types
+    , katip
+    , lens
+    , lens-aeson
+    , microlens
+    , mtl
+    , network-uri
+    , open-browser
+    , optparse-applicative
+    , postgresql-simple
+    , pretty
+    , process
+    , raw-strings-qq
+    , regex-tdfa
+    , regression-simple
+    , relude
+    , req
+    , safe
+    , safe-exceptions
+    , scientific
+    , servant
+    , servant-server
+    , sqlite-simple
+    , stm
+    , template-haskell
+    , text
+    , time
+    , tls
+    , tuple
+    , unix
+    , unliftio
+    , unliftio-pool
+    , unordered-containers
+    , uuid
+    , wai
+    , wai-app-static
+    , wai-logger
+    , warp
+  default-language: GHC2021
+
+executable snow-howitzer
+  main-is: Main.hs
+  other-modules:
+      Paths_snow_howitzer
+  autogen-modules:
+      Paths_snow_howitzer
+  hs-source-dirs:
+      exe
+  default-extensions:
+      DataKinds
+      DeriveGeneric
+      DerivingStrategies
+      DuplicateRecordFields
+      LambdaCase
+      ImportQualifiedPost
+      NoImplicitPrelude
+      OverloadedLabels
+      OverloadedStrings
+      RecordWildCards
+      TemplateHaskell
+      TupleSections
+      TypeFamilies
+      UnicodeSyntax
+      GADTs
+      PolyKinds
+      RankNTypes
+      TypeOperators
+      TypeApplications
+  ghc-options: -O2 -Wall -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      SHA
+    , aeson
+    , ansi-terminal
+    , async
+    , base
+    , base64-bytestring
+    , binary
+    , bytestring
+    , containers
+    , deepseq
+    , directory
+    , entropy
+    , exceptions
+    , filepath
+    , fmt
+    , generic-lens
+    , github
+    , hashable
+    , http-client
+    , http-client-tls
+    , http-conduit
+    , http-types
+    , katip
+    , lens
+    , lens-aeson
+    , microlens
+    , mtl
+    , network-uri
+    , open-browser
+    , optparse-applicative
+    , postgresql-simple
+    , pretty
+    , process
+    , raw-strings-qq
+    , regex-tdfa
+    , regression-simple
+    , relude
+    , req
+    , safe
+    , safe-exceptions
+    , scientific
+    , servant
+    , servant-server
+    , snow-howitzer
+    , sqlite-simple
+    , stm
+    , template-haskell
+    , text
+    , time
+    , tls
+    , tuple
+    , unix
+    , unliftio
+    , unliftio-pool
+    , unordered-containers
+    , uuid
+    , wai
+    , wai-app-static
+    , wai-logger
+    , warp
+  default-language: GHC2021
+
+test-suite snow-howiztertest
+  type: exitcode-stdio-1.0
+  main-is: Driver.hs
+  other-modules:
+      Autodiscover
+      SnowHowitzer.Test.Prelude
+      Paths_snow_howitzer
+  autogen-modules:
+      Paths_snow_howitzer
+  hs-source-dirs:
+      test
+  default-extensions:
+      DataKinds
+      DeriveGeneric
+      DerivingStrategies
+      DuplicateRecordFields
+      LambdaCase
+      ImportQualifiedPost
+      NoImplicitPrelude
+      OverloadedLabels
+      OverloadedStrings
+      RecordWildCards
+      TemplateHaskell
+      TupleSections
+      TypeFamilies
+      UnicodeSyntax
+      GADTs
+      PolyKinds
+      RankNTypes
+      TypeOperators
+      TypeApplications
+  ghc-options: -O2 -Wall -dynamic -rtsopts -threaded -main-is Driver
+  build-depends:
+      HUnit
+    , SHA
+    , aeson
+    , ansi-terminal
+    , async
+    , base
+    , base64-bytestring
+    , binary
+    , bytestring
+    , containers
+    , deepseq
+    , directory
+    , entropy
+    , envy
+    , exceptions
+    , filepath
+    , fmt
+    , generic-lens
+    , generic-random
+    , github
+    , hashable
+    , http-client
+    , http-client-tls
+    , http-conduit
+    , http-types
+    , katip
+    , lens
+    , lens-aeson
+    , microlens
+    , mtl
+    , network
+    , network-uri
+    , open-browser
+    , optparse-applicative
+    , postgresql-simple
+    , pretty
+    , process
+    , quickcheck-instances
+    , raw-strings-qq
+    , regex-tdfa
+    , regression-simple
+    , relude
+    , req
+    , safe
+    , safe-exceptions
+    , scientific
+    , servant
+    , servant-server
+    , snow-howitzer
+    , sqlite-simple
+    , stm
+    , tasty
+    , tasty-discover
+    , tasty-expected-failure
+    , tasty-golden
+    , tasty-hunit
+    , tasty-quickcheck
+    , template-haskell
+    , text
+    , time
+    , tls
+    , tuple
+    , unix
+    , unliftio
+    , unliftio-pool
+    , unordered-containers
+    , uuid
+    , wai
+    , wai-app-static
+    , wai-logger
+    , warp
+  default-language: GHC2021
